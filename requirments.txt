@@ -1,0 +1,4 @@
+PIL==1.1.7
+RPi.GPIO==0.5.4
+picamera==1.2
+python-aalib==0.2
