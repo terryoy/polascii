@@ -1,5 +1,7 @@
-POLASCII - an ASCII version of Polaroid-like camera
+POLASCII 
 ========
+
+Pol(aroid)-ASCII - an ASCII version of a Polaroid-like camera
 
 This is a small project intended for public demonstration. It runs on Raspberry Pi with Picamera and AALib(ASCII Art). It lively refreshes with the camera video, and will print out an ASCII-Art photo when user push a button.
 
@@ -15,6 +17,6 @@ This project is a work of community contribution. Thanks to the happy guys below
 The software is still *under development*. Stay tuned.
 
 ---
-author: terryoy@SZDIY
+author: terryoy@SZDIY  
 website: http://szdiy.org/
 
