@@ -2,3 +2,10 @@ PIL==1.1.7
 RPi.GPIO==0.5.4
 picamera==1.2
 python-aalib==0.2
+
+# for RPi version, you need to manually install pyusb, pyserial, and python-qrcode 
+#
+# reference:
+# wget http://downloads.sourceforge.net/project/pyusb/PyUSB%201.0/1.0.0-beta-1/pyusb-1.0.0b1.zip
+# git clone https://github.com/lincolnloop/python-qrcode
+# wget https://python-escpos.googlecode.com/files/python-escpos-1.0-1.zip
