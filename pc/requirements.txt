@@ -1,0 +1,9 @@
+PIL==1.1.7
+python-aalib==0.2
+pyserial==2.5
+
+# for PC version, you need to install opencv
+# reference:
+#   sudo apt-get install python-opencv
+#
+
