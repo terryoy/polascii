@@ -38,8 +38,6 @@ def upload(request):
         # bad request
         return bad_request()
             
-
-    response.write(conf.get('upload_url_prefix') + 'some.html')
     return response
 
 # url mapping
