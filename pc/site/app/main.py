@@ -50,7 +50,7 @@ all_urls = [
 
 # for wsgi execute
 warnings.simplefilter('ignore')
-main = WSGIApplication(
+app = WSGIApplication(
     middleware = [
         bootstrap_defaults(url_mapping=all_urls),
         path_routing_middleware_factory
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     try:
         print('Visit http://localhost:%d/' % port)
         BaseHandler.http_version = '1.1'
-        make_server('', port, main).serve_forever()
+        make_server('', port, app).serve_forever()
     except KeyboardInterrupt:
         pass
     print('\nThanks!')

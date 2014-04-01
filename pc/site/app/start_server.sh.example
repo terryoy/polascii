@@ -1,0 +1,23 @@
+#!/bin/bash
+set -e
+#set -x
+ENV_NAME=wheezyweb
+APP_NAME=polascii-app
+HOME=/home/terryoy
+WORKON_HOME=$HOME/.virtualenvs
+LOGFILE=/srv/logs/$APP_NAME/console.log
+LOGDIR=$(dirname $LOGFILE)
+NUM_WORKERS=4
+BIND_ADDR=127.0.0.1
+BIND_PORT=18011
+PID_FILE=/srv/logs/$APP_NAME/gunicorn.pid
+# user/group to run as
+USER=terryoy
+GROUP=terryoy
+# setup
+cd $HOME/workspace/polascii/pc/site/app
+#source virtualenvwrapper.sh
+#workon $ENV_NAME
+source $WORKON_HOME/$ENV_NAME/bin/activate
+test -d $LOGDIR || mkdir -p $LOGDIR
+gunicorn -b $BIND_ADDR:$BIND_PORT -w $NUM_WORKERS  main:app
