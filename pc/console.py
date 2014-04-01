@@ -4,7 +4,8 @@ import os, termios, sys, select, tty
 class PolasciiConsole:
 
     screen = None
-    contrast = 56
+    contrast = 56   # 0..127
+    brightness = 60  # 0..255
     _tty_settings = None
 
     def get_terminal_size(self, fd=1):
@@ -49,7 +50,7 @@ class PolasciiConsole:
 
     def display_image(self, img):
         self.screen.put_image((0,0), img.convert('L').resize(self.screen.virtual_size))
-        print(self.screen.render(contrast=self.contrast))
+        print(self.screen.render(contrast=self.contrast, brightness=self.brightness))
 
 
 

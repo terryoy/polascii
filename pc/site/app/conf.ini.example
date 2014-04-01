@@ -1,0 +1,8 @@
+[polascii-web]
+
+; the path to save upload files
+upload_dir=/srv/www/polascii/path/to/upload/
+upload_url_prefix = /gallery/uploaded/
+
+; upload_size in kilobytes
+upload_size=200

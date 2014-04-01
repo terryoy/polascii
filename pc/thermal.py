@@ -7,7 +7,8 @@ class PolasciiPrinter:
 
     tp = None
     screen = None
-    contrast = 56
+    contrast = 56 # 0..127
+    brightness = 60 # 0..255
     
     def __init__(self):
         try:
@@ -39,9 +40,10 @@ class PolasciiPrinter:
     def ascii_image(self, img):
         if not self.tp:
             print('printer not ready')
+            return
         try:
             self.screen.put_image((0,0), img.convert('L').resize(self.screen.virtual_size))
-            text = self.screen.render(contrast=self.contrast)
+            text = self.screen.render(contrast=self.contrast, brightness=self.brightness)
             self.tp.text(text)
         except RuntimeError, e:
             print "Cannot convert and print the image"
@@ -54,6 +56,8 @@ class PolasciiPrinter:
             print('printer not ready')
 
     def align(self, align='L'):
+        if not self.tp:
+            return
         if align == 'L':
             self.tp._raw(constants.TXT_ALIGN_LT)
         elif align == 'R':
@@ -62,4 +66,7 @@ class PolasciiPrinter:
             self.tp._raw(constants.TXT_ALIGN_CT)
 
     def newline(self):
-        self.tp._raw(constants.CTL_LF)
+        if self.tp:
+            self.tp._raw(constants.CTL_LF)
+        else:
+            print('printer not ready')

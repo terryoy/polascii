@@ -10,32 +10,32 @@ a:link, a:hover, a:active, a:visited {
 
 /*head*/
 .head {
-	width: 880;
-	padding: 10px 0 5px 0;
-	border-bottom: 1px #161616 solid;
+	width: 880px;
+	padding: 10px 0px 5px 0px;
+	border-bottom: 1px #363636 solid;
 }
 
 /* navigation bar */
 .navbar {
 	min-height: 30px;
-	width: 880;
-	border-bottom: 1px #161616 solid;
+	width: 880px;
+	border-bottom: 1px #363636 solid;
 }
 
 .navbar ul {
-	width: 800;
+	width: 800px;
 	list-style-type: none;
 }
 
 .navbar li {
 	float: left;
 	display: inline-block;
-	margin:0;
-	padding: 0 20 0 20;
+	margin: 0px;
+	padding: 0px 20px 0px 20px;
 }
 
 .navbar a {
-	padding: 0 10 3 10;
+	padding: 0px 10px 3px 10px;
 	display: block;
 	color: #aaaaaa;
 	text-decoration: none;
@@ -52,13 +52,13 @@ a:link, a:hover, a:active, a:visited {
 #content {
 	display: block;
 	min-height: 360px;
-	width: 780;
+	width: 780px;
 	text-align: left;
 }
 
 footer {
-	width: 880;
-	border-top:  1px #161616 solid;
+	width: 880px;
+	border-top:  1px #363636 solid;
 	padding-top: 10px;
 }
 

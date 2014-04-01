@@ -40,7 +40,7 @@ class PolasciiExport:
         """
         self._export(path, 'html', **kwargs)
         
-    def export_more(self, path, **kawrgs)
+    def export_more(self, path, **kawrgs):
         """
         Export the image in a more/less console format
         """
