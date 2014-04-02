@@ -29,17 +29,17 @@ class PolasciiPrinter:
             self.tp.text(str)
             self.tp.control('LF')
         else:
-            print('printer not ready')
+            print(str)
 
     def qrcode(self, str):
         if self.tp:
             self.tp.qr(str)
         else:
-            print('printer not ready')
+            print('qrcode:', str)
 
     def ascii_image(self, img):
         if not self.tp:
-            print('printer not ready')
+            print('ascii_image: (...)')
             return
         try:
             self.screen.put_image((0,0), img.convert('L').resize(self.screen.virtual_size))
@@ -53,7 +53,7 @@ class PolasciiPrinter:
         if self.tp:
             self.tp.cut(mode)
         else:
-            print('printer not ready')
+            print('--paper cut--')
 
     def align(self, align='L'):
         if not self.tp:
@@ -69,4 +69,4 @@ class PolasciiPrinter:
         if self.tp:
             self.tp._raw(constants.CTL_LF)
         else:
-            print('printer not ready')
+            print('')

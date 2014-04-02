@@ -3,12 +3,15 @@ from camera import PolasciiCamera
 from thermal import PolasciiPrinter
 from console import PolasciiConsole
 from export import PolasciiExport
+from uploader import PolasciiUploader, contents_from_file
 from PIL import Image
 from datetime import datetime
 
 console = PolasciiConsole()
 camera = PolasciiCamera()
 printer = PolasciiPrinter()
+uploader = PolasciiUploader()
+
 printer.contrast = console.contrast = 70
 
 output_path = '../temp/szmakerfaire2014'
@@ -17,10 +20,10 @@ url_prefix = 'http://polascii.szdiy.org/gallery/szmakerfaire2014/'
 def console_display(image):
     console.display_image(image)    
 
-def template_print(image, filename):
+def template_print(image, url):
     if not printer.tp:
         print('printer not ready')
-        return
+        #return
     printer.text('--------------------------------')
     printer.ascii_image(image)
     printer.newline()
@@ -29,7 +32,7 @@ def template_print(image, filename):
     printer.text('--- Project Polascii ---')
     printer.text('by terryoy, 2014')
     printer.newline()
-    printer.qrcode(url_prefix + filename)
+    printer.qrcode(url)
     printer.newline()
     printer.align('L')
     printer.text('Welcome to join SZDIY!')
@@ -37,15 +40,27 @@ def template_print(image, filename):
     printer.text('--------------------------------')
     printer.cut()
 
+def upload_file(fullpath):
+    name = os.path.basename(fullpath)
+    content = contents_from_file(fullpath)
+    print 'uploading:', name, '...'
+
+    code,reason,uri = uploader.upload_file(name, content)
+    print code, reason, uploader.get_full_url(uri)
+
+    return code, uploader.get_full_url(uri)
+
+    
 def save_image(image):
     filename = datetime.now().strftime('%Y%m%d%H%M%S')
     # save image to disk
     image.save(os.path.join(output_path, filename + '.jpg'))
 
+    export_path = os.path.join(output_path, filename + '.html')
     export = PolasciiExport(image.convert('L').resize((400, 180)))
-    export.export_nhtml(os.path.join(output_path, filename + '.html'), contrast=console.contrast, brightness=console.brightness)
+    export.export_nhtml(export_path, contrast=console.contrast, brightness=console.brightness)
     
-    return filename + '.html' # return the export html name        
+    return export_path # return the export html name        
 
 def main():
     global camera
@@ -59,10 +74,15 @@ def main():
         
         key = console.get_key()
         if key == '\x20':
-            filename = save_image(image)
-            template_print(image, filename)
+            fullpath = save_image(image)
+            #template_print(image, url_prefix + os.path.basename(fullpath))
             # do we upload html here?
-            # ...
+            code, url = upload_file(fullpath)
+            if code == 200:
+                template_print(image, url) # print url if network available
+            else:
+                print('image upload failed! cannot print ticket')
+
         elif key == '\x1b':
             break
         elif key == '=':
