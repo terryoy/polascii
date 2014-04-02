@@ -13,6 +13,7 @@ compressed = zlib.compress(data)
 crc = zlib.crc32(compressed)
 print repr(compressed), crc
 
-print post_multipart('polascii.szdiy.org', '/upload', [('crc', str(crc))], [('data', 'requirements.txt', compressed)])
-
+#print post_multipart('polascii.szdiy.org', '/upload', [('crc', str(crc))], [('data', 'requirements.txt', compressed)])
+print post_multipart('localhost:18011', '/upload', [('crc', str(crc))], [('data', 'requirements.txt', compressed)])
+ 
 

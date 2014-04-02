@@ -5,7 +5,7 @@ ENV_NAME=wheezyweb
 APP_NAME=polascii-app
 HOME=/home/terryoy
 WORKON_HOME=$HOME/.virtualenvs
-LOGFILE=/srv/logs/$APP_NAME/console.log
+LOGFILE=/srv/logs/$APP_NAME/$APP_NAME.log
 LOGDIR=$(dirname $LOGFILE)
 NUM_WORKERS=4
 BIND_ADDR=127.0.0.1
@@ -22,5 +22,5 @@ source $WORKON_HOME/$ENV_NAME/bin/activate
 test -d $LOGDIR || mkdir -p $LOGDIR
 exec gunicorn -b $BIND_ADDR:$BIND_PORT \
     -w $NUM_WORKERS --user=$USER --group=$GROUP \
-    --pid $PID_FILE  main:app
+    --pid $PID_FILE  --log-file=$LOG_FILE main:app
 

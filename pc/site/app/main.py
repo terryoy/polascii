@@ -1,5 +1,8 @@
 import warnings
 import zlib
+import random
+import os
+from datetime import  datetime
 from wheezy.http import HTTPResponse
 from wheezy.http import accept_method, bad_request
 from wheezy.http import WSGIApplication
@@ -15,8 +18,8 @@ def ping(request):
 
 @accept_method('POST')
 def upload(request):
-    print 'form:', request.form
-    print 'uploaded:', request.files
+    #print 'form:', request.form
+    #print 'uploaded:', request.files
 
     response = HTTPResponse()
     # check data integrity:
@@ -29,9 +32,12 @@ def upload(request):
             # return file save result
             content = zlib.decompress(storage.value)
             # write to file here
-            # ...
+            savefile = storage.filename if storage.filename else (datetime.now().strftime('%Y%m%d%H%M%S') + str(random.randint(0,100)) + '.html')
+            fout = open(os.path.join(conf.get('upload_dir'), savefile), 'w')
+            fout.write(content)
+            fout.close()
 
-            response.write(conf.get('upload_url_prefix') + 'some.html')
+            response.write(conf.get('upload_url_prefix') + savefile)
         else:
             return bad_request()
     else:
