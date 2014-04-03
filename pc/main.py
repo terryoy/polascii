@@ -14,7 +14,8 @@ uploader = PolasciiUploader()
 
 printer.contrast = console.contrast = 70
 
-output_path = '../temp/szmakerfaire2014'
+#output_path = '../temp/szmakerfaire2014'
+output_path='../temp/webszmk2014'
 url_prefix = 'http://polascii.szdiy.org/gallery/szmakerfaire2014/'
 
 def console_display(image):
@@ -83,8 +84,8 @@ def main():
             else:
                 print('image upload failed! cannot print ticket')
 
-        elif key == '\x1b':
-            break
+        #elif key == '\x1b':
+        #    break
         elif key == '=':
             if console.contrast < 127:
                 console.contrast += 2
