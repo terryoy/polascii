@@ -37,7 +37,7 @@ def template_print(image, url):
     printer.newline()
     printer.align('L')
     printer.text('Welcome to join SZDIY!')
-    printer.text('http://szdiy.org/')
+    printer.text('http://www.szdiy.org/')
     printer.text('--------------------------------')
     printer.cut()
 
@@ -82,7 +82,8 @@ def main():
             if code == 200:
                 template_print(image, url) # print url if network available
             else:
-                print('image upload failed! cannot print ticket')
+                print('image upload failed! print ticket first')
+                template_print(image, url_prefix + os.path.basename(fullpath)) # print url if network available
 
         #elif key == '\x1b':
         #    break
