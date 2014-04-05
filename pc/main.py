@@ -3,7 +3,7 @@ from camera import PolasciiCamera
 from thermal import PolasciiPrinter
 from console import PolasciiConsole
 from export import PolasciiExport
-from uploader import PolasciiUploader, contents_from_file
+from uploader import PolasciiUploader, contents_from_file, polascii_queue, QueueWorker
 from PIL import Image
 from datetime import datetime
 
@@ -14,8 +14,8 @@ uploader = PolasciiUploader()
 
 printer.contrast = console.contrast = 70
 
-#output_path = '../temp/szmakerfaire2014'
-output_path='../temp/webszmk2014'
+output_path = '../temp/szmakerfaire2014'
+#output_path='../temp/webszmk2014'
 url_prefix = 'http://polascii.szdiy.org/gallery/szmakerfaire2014/'
 
 def console_display(image):
@@ -65,6 +65,9 @@ def save_image(image):
 
 def main():
     global camera
+
+    # open PolasciiUploadQueue's QueueWorker
+    QueueWorker(polascii_queue).start()
 
     camera.open()
     image = camera.capture()

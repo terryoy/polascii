@@ -1,6 +1,6 @@
 import httplib, mimetypes
 
-def post_multipart(host, selector, fields, files):
+def post_multipart(host, selector, fields, files, timeout=10):
     """
     Post fields and files to an http host as multipart/form-data.
     fields is a sequence of (name, value) elements for regular form fields.
@@ -8,7 +8,7 @@ def post_multipart(host, selector, fields, files):
     Return the server's response status, reason, and content.
     """
     content_type, body = encode_multipart_formdata(fields, files)
-    h = httplib.HTTPConnection(host)
+    h = httplib.HTTPConnection(host, timeout=timeout)
     headers = {
         'User-Agent': 'INSERT USERAGENTNAME',
         'Content-Type': content_type
