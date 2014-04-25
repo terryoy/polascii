@@ -44,15 +44,19 @@ $ sudo python main.py
 
 ### Test
 
-After install the dependencies, you can go to the ```/<pc or rpi>/test``` folder to look for some test scripts that proves your installation works.
+After install the dependencies, you can go to the ```/pc/test``` or ```/rpi/test``` folders to look for some test scripts that proves your installation works.
 
-(for PC) 
+``` bash
+
+# (for PC) 
 $ cd pc/test
 $ python opencv.py
 
-(for RPi)
+# (for RPi)
 $ cd rpi/test
 $ python test.py
+
+```
 
 **note**: if you want to test the thermal printer, it needs root priviliges to access the USB device, so don't for get to use a _sudo_.
 
@@ -60,8 +64,8 @@ $ python test.py
 
 The main program is "main.py". When running it, you can modify **brightness** or **contrast** parameter by pressing below keys for tuning while displaying in various places.
 
- * '[', ']' - decrease, or increase the picture's _brightness_.
- * '-', '=' - decrease, or increase the picture's _contrast_.
+ * **[**, **]'** - decrease, or increase the picture's _brightness_.
+ * **-**, **=** - decrease, or increase the picture's _contrast_.
 
 ### CREDITS
 
