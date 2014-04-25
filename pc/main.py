@@ -12,11 +12,12 @@ camera = PolasciiCamera()
 printer = PolasciiPrinter()
 uploader = PolasciiUploader()
 
-printer.contrast = console.contrast = 70
+printer.contrast = 10
+console.contrast = 65
 
-output_path = '../temp/szmakerfaire2014'
+output_path = '../temp/wuyuefeng2014'
 #output_path='../temp/webszmk2014'
-url_prefix = 'http://polascii.szdiy.org/gallery/szmakerfaire2014/'
+url_prefix = 'http://polascii.szdiy.org/gallery/wuyuefeng2014/'
 
 def console_display(image):
     console.display_image(image)    
@@ -38,6 +39,8 @@ def template_print(image, url):
     printer.align('L')
     printer.text('Welcome to join SZDIY!')
     printer.text('http://www.szdiy.org/')
+    printer.text('--------------------------------')
+    printer.text(url)
     printer.text('--------------------------------')
     printer.cut()
 
