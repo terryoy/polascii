@@ -1,6 +1,6 @@
 import httplib, mimetypes
 
-def post_multipart(host, selector, fields, files, timeout=10):
+def post_multipart(host, selector, fields, files, timeout=5):
     """
     Post fields and files to an http host as multipart/form-data.
     fields is a sequence of (name, value) elements for regular form fields.

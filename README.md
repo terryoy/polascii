@@ -3,11 +3,12 @@ POLASCII
 
 Pol(aroid)-ASCII - an ASCII version of a Polaroid-like camera
 
-This is a small project intended for party event. It runs on Raspberry Pi with Picamera and AALib(ASCII Art). It lively refreshes with the camera video, and will print out an ASCII-Art photo when user push a button.
+Please find the project web site here:
+http://polascii.szdiy.org/
 
-The software is still *under development*. Stay tuned.
+This is a small project intended for party event. It captures a picture from the camera and prints a ticket with a thermal printer which contains a link to a full ascii image of the picture. It was intended to run on Raspberry Pi with Picamera and AALib(ASCII Art). However I found the performance is not compromising, so I also wrote a PC version together. 
 
-### Install
+#### Install
 
 For PC version, it needs opencv for the camera; PIL for image processing; aalib for ascii rendering; pyserial, pyusb, python-qrcode, python-escpos for the thermal printer.
 
@@ -42,7 +43,7 @@ $ sudo python main.py
 
 ```
 
-### Test
+#### Test
 
 After install the dependencies, you can go to the ```/pc/test``` or ```/rpi/test``` folders to look for some test scripts that proves your installation works.
 
@@ -60,11 +61,11 @@ $ python test.py
 
 **note**: if you want to test the thermal printer, it needs root priviliges to access the USB device, so don't for get to use a _sudo_.
 
-### Some Key Controls
+#### Some Key Controls
 
 The main program is "main.py". When running it, you can modify **brightness** or **contrast** parameter by pressing below keys for tuning while displaying in various places.
 
- * **[**, **]'** - decrease, or increase the picture's _brightness_.
+ * **[**, **]** - decrease, or increase the picture's _brightness_.
  * **-**, **=** - decrease, or increase the picture's _contrast_.
 
 ### CREDITS

@@ -39,7 +39,41 @@
 		<content id="content">
 			<center><p><img src="https://farm8.staticflickr.com/7404/13533131683_b161f36498.jpg" alt="polascii-display"><p></center>
 			
+			<p>POLASCII project contains two versions: an Raspberry Pi version and a PC version.<p>
 
+			<p class="chi">字符拍立得（POLASCII）项目包含有两个版本：一个树莓派版和一个PC版。
+
+			<p>In the beginning, I was thinking using Raspberry Pi to make a hacking project to demonstrate on Maker Faire Shenzhen 2014. When <a href="http://ascii.dyne.org">dyne's hasciicam project</a> came to my eyes, I thought about the idea of a combination of ASCII camera and a Polaroid, which can also get user an ASCII photo instantly. So on the <a href="http://hack42.com/hackathon">Hack42 hackathon</a>, I tried out a few things that I might be using: Raspberry Pi, RPi camera, the thermal printer, and the AA-lib.</p>
+
+			<p class="chi">最初的时候，我的设想是用树莓派制作一个项目参加2014”深圳制汇节“的展览。当我看到<a href="http://ascii.dyne.org">dyne的hasciicam项目</a>时，我慢慢地想到了要将字符画和拍立得结合在一起的主意，这样用户就可以马上拿到一张字符风格的照片回去。于是在一场<a href="http://hack42.com/hackathon">Hack42黑客马拉松</a>里，我就把这个项目的可能会用到的技术都测试了一下：树莓派，树莓派摄像头，热敏打印机，AAlib。</p>
+
+			<p>It's easy to use Debian on Raspberry Pi, so all I need to do is to find the library for capturing pictures from the camera, render them into ASCII characters, and then send to the thermal printer to print. On Raspberry Pi, there is a <a href="https://pypi.python.org/pypi/picamera/">picamera</a> for it's specific camera. For the thermal printer, there is this <a href="https://code.google.com/p/python-escpos/">python-escpos</a> project which handles the printing interface. And the last, there is also this <a href="https://pypi.python.org/pypi/python-aalib/">python-aalib</a> which wraps up the C interface of linux aalib.</p>
+
+			<p class="chi">在树莓派上跑起Debian操作系统是很轻易的，接下来我需要做的便是要找齐这些功能相关的库：从摄像头拍摄照片的，将照片渲染成字符画的，将字符画发送到热敏打印机打印的。在树莓派上，有一个叫做<a href="https://pypi.python.org/pypi/picamera/">picamera</a>的库可以控制摄像头的拍照或视频；而热敏打印机则可以通过一个叫<a href="https://code.google.com/p/python-escpos/">python-escpos</a>的库来控制打印相关的功能接口。最后也是最重要的一个，便是用于将图片渲染成字符画的<a href="https://pypi.python.org/pypi/python-aalib/">python-aalib</a>，它把linux以C写成的aalib封装成python的库</p>
+
+			<p>However, I found out some serious problems: 1. the python-aalib running on RPi has bad performance, the rendering process takes nearly half a second, so I cannot get real time live show from the camera.(I didn't have time to investigate the reason); 2. The ASCII picture printed on the paper is too small to recognize things, while it takes too long to print a thumbnail pixel image.</p>
+
+			<p class="chi">然而，我在尝试过后发现一些比较严重的问题：1.在树莓派上跑python-aalib的时候性能很差，大概需要半秒才渲染出一张字符画，这样我就不能像实时的视频一样显示用户的动作了（由于没有太多时间深入调查，不知道是因为python的原因还是原来的C库就有这样的问题；2.在热敏打印纸上打印出来的照片太小了，无法识别出来图片是什么东西，如果直接打像素照片呢，速度又非常慢（这是由于热敏打印机对自定义图片打印的限制，它打的时候可以很快，但是之前需要很长时间把图片内容发到内存里）。</p>
+
+			<center><img src="https://farm8.staticflickr.com/7011/14040873783_0eddd4b022.jpg"></center>
+
+			<p>So I decided to switch to a PC solution with a web site hosting for holding the HTML ASCII image online. Extra work needs to be done. The picamera is not available on PC, so I search and found OpenCV's camera solution. It needs a conversion from OpenCV to PIL and the rest are the same. </p>
+
+			<p class="chi">于是我决定改用PC方案，配合一个网站来存放字符照片给用户查看。更多的工作需要完成。树莓派上的Picamra在PC上不适用，于是我又查找到了OpenCV的读取摄像头的方法，只需要把OpenCV捕捉下来的照片转成PIL形式的，剩下的就跟树莓派的一样了。</p>	
+
+			<p> The web site needs an app that accepts uploads from the client. I just chose a simple and fast one "<a href="https://pythonhosted.org/wheezy.web/">wheezy.web</a>", which I never used before, and it's a chance to make a test. The original python-aalib only ports a subset of the features of the aalib. I'm not satisfied with only generating plain-text, but rather the more attractive grayscale html form. So I study the python-aalib source code and use <a href="https://docs.python.org/2/library/ctypes.html">ctypes</a> to port more functions from aalib. Now the rendering and the uploading parts are ready, all I need is the <a href="https://github.com/lincolnloop/python-qrcode">python-qrcode</a> that integrated with python-escpos to print a QR code for the link.</p>
+
+			<p class="chi">在网站上则需要开发一个小应用来接收来自客户端的上传。我选用了一个从来没用过，但是据说是非常快和易于使用的web框架"<a href="https://pythonhosted.org/wheezy.web/">wheezy.web</a>"，正好用来测试一下。原来的python-aalib只封装了aalib功能的一个子集。我对它那只有普通文本的效果并不满足，实际上aalib包含了一个更漂亮的导出成带灰度的html的方法。于是我便研究了一下python-aalib的源代码并使用<a href="https://docs.python.org/2/library/ctypes.html">ctypes</a>封装引自aalib的更多功能。现在渲染和上传的部分都已经准备好了，剩下的工作就只有使用集成了<a href="https://github.com/lincolnloop/python-qrcode">python-qrcode</a>的python-escpos来打印包含网站链接的二维码而已。</p>
+
+			<center><img src="https://farm8.staticflickr.com/7075/14023418071_484a9621da_n.jpg" alt="qrcode-print-template"></center>
+
+			<p>So the final demostration is a monitor, a usb camera, a laptop and a thermal printer that works on Maker Faire Shenzhen 2014.</p>
+
+			<p class="chi">于是最后的在2014深圳制汇节的展示方案是： 一个显示器，一个usb摄像头，一台笔记本和一台热敏打印机。</p>
+
+			<center><img src="https://farm3.staticflickr.com/2929/14045249691_733721e5d0.jpg"></center>
+
+			<p>&nbsp;</p>
 			
 		</content>
 	</center>
