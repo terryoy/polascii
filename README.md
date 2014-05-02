@@ -76,12 +76,13 @@ This project is a work of community contribution. Thanks to the happy guys below
     Danfei@SZDIY	- for the thermal printer
     Laowang@SZDIY	- for the case
 
----
 author: terryoy@SZDIY  
 website: http://szdiy.org/
 
 
 ### License
+--------------
+
 GPL V3
 
 ```text
