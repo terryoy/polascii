@@ -1,11 +1,11 @@
 body {
 	font-family: Monospace;
-	color: #00cc00;
+	color: #11b411;
 	background-color: black;
 }
 
 a:link, a:hover, a:active, a:visited {
-	color: #aaaaaa;	
+	color: #bbbbbb;	
 }
 
 /*head*/
@@ -37,7 +37,7 @@ a:link, a:hover, a:active, a:visited {
 .navbar a {
 	padding: 0px 10px 3px 10px;
 	display: block;
-	color: #aaaaaa;
+	color: #bbbbbb;
 	text-decoration: none;
 }
 
@@ -67,5 +67,5 @@ footer p {
 }
 
 .chi {
-	color: #5555ff;
+	color: #5B76CE;
 }
