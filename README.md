@@ -37,7 +37,12 @@ $ sudo pip install pyserial
 $ python setup.py build
 $ sudo python setup.py install
 
-# remember to change the paths defined in main.py
+# create a sqlite3 database for handling the failed pictures and re-upload
+$ sqlite3 queue.db
+create table upload (host text, service text, name text, data blob);
+
+
+# remember to change the paths defined in main.py (e.g. "output_path" and "url_prefix")
 # then execute the main program(or testing program for debugging)
 $ sudo python main.py
 
