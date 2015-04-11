@@ -1,5 +1,5 @@
 import os
-from camera import PolasciiCamera
+from camera.camera import PolasciiCamera
 from thermal import PolasciiPrinter
 from console import PolasciiConsole
 from export import PolasciiExport
