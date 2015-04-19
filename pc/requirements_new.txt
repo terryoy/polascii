@@ -1,0 +1,8 @@
+Pillow==2.8.1
+caca==0.99.beta19
+escpos==2.7
+pyserial==2.7
+pyusb==1.0.0b1
+qrcode==4.0.4.post
+six==1.9.0
+wsgiref==0.1.2

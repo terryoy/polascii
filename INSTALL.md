@@ -1,0 +1,64 @@
+(For PC version, it needs **opencv** for the camera; For Raspberry Pi, it needs **picamera** for the rpi camera.
+
+If you're using virtualenv, you need to install opencv before creating the environment, and use "--system-site-packages" to reference it.
+
+```bash
+
+# python-opencv
+$ sudo apt-get install python-opencv
+
+# install PIL (or Pillow)
+$ sudo apt-get install libjpeg8 libjpeg8-dev libfreetype6 libfreetype6-dev zlib1g-dev
+
+# pip install pillow
+# pip install pyserial
+
+```
+
+Other packages that don't use "pip" to install:
+
+```bash
+
+### libcaca-0.99.beta19: a crossplatform ASCII art library, a replacement for aalib
+
+$ wget http://caca.zoy.org/files/libcaca/libcaca-0.99.beta19.tar.gz
+$ tar zxvf libcaca-0.99.beta19.tar.gz
+$ cd libcaca-0.99.beta19
+$ ./configure
+$ make
+$ sudo make install
+
+$ cd python
+$ python setup.py build
+$ python setup.py install
+
+# (for Mac OSX, it need's pyobjc-core to call libcaca)
+$ pip install pyobjc-core
+
+### pyusb-1.0.0b1: handling usb connection in python
+
+$ wget -O pyusb-1.0.0b1.zip http://downloads.sourceforge.net/project/pyusb/PyUSB%201.0/1.0.0-beta-1/pyusb-1.0.0b1.zip?r=&ts=1395719761&use_mirror=jaist
+$ unzip pyusb-1.0.0b1.zip 
+$ cd pyusb-1.0.0b1
+$ python setup.py build
+$ python setup.py install
+
+
+### python-escpos-1.0-1: ESC/POS library for the thermal printer.
+
+$ wget https://python-escpos.googlecode.com/files/python-escpos-1.0-1.zip
+$ unzip python-escpos-1.0-1.zip
+$ cd python-escpos-1.0-1 
+$ python setup.py build
+$ python setup.py install
+
+### python-qrcode: QR code library for the thermal printer.
+
+$ git clone https://github.com/lincolnloop/python-qrcode
+$ cd python-qrcode
+$ python setup.py build
+$ python setup.py install
+
+```
+
+
