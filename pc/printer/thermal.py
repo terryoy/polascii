@@ -1,5 +1,4 @@
-#!/usr/bin/python
-
+from 
 from escpos import *
 import aalib
 
@@ -12,7 +11,7 @@ class PolasciiPrinter:
     
     def __init__(self):
         try:
-            self.tp = printer.Usb(0x1a86, 0x7584, interface=0, in_ep=2, out_ep=2)
+            self.tp = printer.Usb(0x6868, 0x0600, interface=0, in_ep=4, out_ep=3)
         except:
             print('cannot open thermal printer!')
         

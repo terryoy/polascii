@@ -1,0 +1,20 @@
+[config]
+
+
+[thermal]
+; config your thermal printer's settings here
+vendor_id=0x6868
+product_id=0x0600
+ep_in=4
+ep_out=3
+
+[upload]
+; service config
+upload_host=polascii.szdiy.org
+upload_service=/upload
+gallery_name=<your_event_name>
+
+; common config for upload queue
+queue_db=queue.db
+log_level=DEBUG
+log_file=upload_queue.log

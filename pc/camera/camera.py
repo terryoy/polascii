@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 from PIL import Image
 
 class Camera(object):
@@ -42,9 +41,9 @@ class OpenCVCamera(Camera):
     
     vidcap = None
 
-
     def __init__(self):
-        try:
+        try:  
+            global cv2
             import cv2
         except ImportError as e:
             raise RuntimeError("Cannot find OpenCV Library!")
@@ -100,6 +99,7 @@ class PiCamera(Camera):
 
     def __init__(self):
         try:
+            global io, picamera
             import io, picamera
         except ImportError as e:
             raise RuntimeError("Cannot find Picamera Library!")
@@ -173,10 +173,10 @@ class PolasciiCamera(Camera):
         self._cam.close()
 
     def capture(self, width=800, height=600):
-        self._cam.capture(width, height)
+        return self._cam.capture(width, height)
 
     def fast_capture(self, width=320, height=240):
-        self._cam.fast_capture(width, height)
+        return self._cam.fast_capture(width, height)
 
 
 

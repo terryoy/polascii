@@ -31,6 +31,10 @@ class PolasciiUploadQueue:
         self._db = sqlite3.connect(self._dbname, check_same_thread=False)
         self._db.text_factory = str
         print '%s connected' % self._dbname
+
+        c = self._db.cursor()
+        c.execute('create table if not exists upload(host text, service text, name text, data blob);')
+        self._db.commit()
     
     def __del__(self):
         self._db.close()

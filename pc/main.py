@@ -15,9 +15,9 @@ uploader = PolasciiUploader()
 printer.contrast = 10
 console.contrast = 65
 
-output_path = '../temp/wuyuefeng2014'
+output_path = '../temp/upload'
 #output_path='../temp/webszmk2014'
-url_prefix = 'http://polascii.szdiy.org/gallery/wuyuefeng2014/'
+url_prefix = 'http://polascii.szdiy.org/gallery/test/'
 
 def console_display(image):
     console.display_image(image)    
