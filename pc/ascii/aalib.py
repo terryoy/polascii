@@ -30,7 +30,7 @@ from ctypes.util import find_library
 #libaa = ctypes.CDLL('libaa.so.1')
 ## load aalib on different platform
 for name in ['aa', 'libaa']: # 'aa' on Linux, 'libaa' on Mac OSX
-    libaa_path = find_library('aa')
+    libaa_path = find_library(name)
     if libaa_path:
         break
 libaa = ctypes.CDLL(libaa_path)
