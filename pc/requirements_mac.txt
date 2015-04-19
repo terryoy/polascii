@@ -1,5 +1,6 @@
 Pillow==2.8.1
 caca==0.99.beta19
+numpy==1.9.2
 pyserial==2.7
 python-aalib==0.3
 python-escpos==1.0.9

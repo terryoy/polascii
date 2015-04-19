@@ -1,6 +1,5 @@
-from 
 from escpos import *
-import aalib
+from ascii import aalib
 
 class PolasciiPrinter:
 

@@ -19,7 +19,18 @@ Other packages that don't use "pip" to install:
 
 ```bash
 
-### libcaca-0.99.beta19: a crossplatform ASCII art library, a replacement for aalib
+### libaa: the traditional Image to ASCII Art, 
+
+# on Linux, you could just install the latest package
+$ sudo apt-get install libaa1
+
+# on Mac OSX, you can install aalib with "brew", but need to create a shared library manually
+$ brew install aalib
+$ g++ -fpic -shared -Wl,-all_load /usr/local/lib/libaa.a -Wl,-noall_load -o /usr/local/lib/libaa.dylib
+
+# since the python-aalib needs some modification for cross-platform, a modified version of aalib.py is included at "pc/ascii/aalib.py".
+
+### (not verified yet) libcaca-0.99.beta19: a crossplatform ASCII art library, a replacement for aalib
 
 $ wget http://caca.zoy.org/files/libcaca/libcaca-0.99.beta19.tar.gz
 $ tar zxvf libcaca-0.99.beta19.tar.gz
@@ -44,13 +55,9 @@ $ python setup.py build
 $ python setup.py install
 
 
-### python-escpos-1.0-1: ESC/POS library for the thermal printer.
+### python-escpos: ESC/POS library for the thermal printer.
 
-$ wget https://python-escpos.googlecode.com/files/python-escpos-1.0-1.zip
-$ unzip python-escpos-1.0-1.zip
-$ cd python-escpos-1.0-1 
-$ python setup.py build
-$ python setup.py install
+$ pip install python-escpos
 
 ### python-qrcode: QR code library for the thermal printer.
 

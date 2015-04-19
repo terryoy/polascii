@@ -1,9 +1,9 @@
 import os
 from camera.camera import PolasciiCamera
-from thermal import PolasciiPrinter
-from console import PolasciiConsole
-from export import PolasciiExport
-from uploader import PolasciiUploader, contents_from_file, polascii_queue, QueueWorker
+from printer.thermal import PolasciiPrinter
+from display.console import PolasciiConsole
+from ascii.export import PolasciiExport
+from uploader.uploader import PolasciiUploader, contents_from_file, polascii_queue, QueueWorker
 from PIL import Image
 from datetime import datetime
 

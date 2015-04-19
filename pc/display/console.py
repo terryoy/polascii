@@ -1,4 +1,4 @@
-import aalib
+from ascii import aalib
 import os, termios, sys, select, tty
 
 class PolasciiConsole:
