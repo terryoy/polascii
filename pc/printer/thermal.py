@@ -1,5 +1,6 @@
 from escpos import *
 from ascii import aalib
+from config.config import polascii_config
 
 class PolasciiPrinter:
 
@@ -10,7 +11,11 @@ class PolasciiPrinter:
     
     def __init__(self):
         try:
-            self.tp = printer.Usb(0x6868, 0x0600, interface=0, in_ep=4, out_ep=3)
+            vendor_id = int(polascii_config.get("vendor_id", "printer"))
+            product_id = int(polascii_config.get("product_id", "printer"))
+            in_ep = int(polascii_config.get('in_ep', 'printer'))
+            out_ep = int(polascii_config.get('out_ep', 'printer'))
+            self.tp = printer.Usb(vendor_id, product_id, interface=0, in_ep=in_ep, out_ep=out_ep)
         except:
             print('cannot open thermal printer!')
         
@@ -68,3 +73,4 @@ class PolasciiPrinter:
             self.tp._raw(constants.CTL_LF)
         else:
             print('')
+

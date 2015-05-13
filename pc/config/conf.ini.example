@@ -1,12 +1,12 @@
 [config]
 
 
-[thermal]
+[printer]
 ; config your thermal printer's settings here
 vendor_id=0x6868
 product_id=0x0600
-ep_in=4
-ep_out=3
+in_ep=4
+out_ep=3
 
 [upload]
 ; service config

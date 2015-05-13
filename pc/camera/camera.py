@@ -46,7 +46,7 @@ class OpenCVCamera(Camera):
             global cv2
             import cv2
         except ImportError as e:
-            raise RuntimeError("Cannot find OpenCV Library!")
+            raise ImportError("Cannot find OpenCV Library!")
 
     def open(self):
         self.vidcap = cv2.VideoCapture(0)
@@ -102,7 +102,7 @@ class PiCamera(Camera):
             global io, picamera
             import io, picamera
         except ImportError as e:
-            raise RuntimeError("Cannot find Picamera Library!")
+            raise ImportError("Cannot find Picamera Library!")
 
     def open(self):
         self.camera = picamera.PiCamera()
