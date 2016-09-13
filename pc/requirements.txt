@@ -1,11 +1,12 @@
-PIL==1.1.7
-python-aalib==0.2
-pyserial==2.5
-
-# for Linux(PC), you need to install opencv, python-qrcode(latest 4.0.4), pyusb, python-escpos
-# reference:
-# sudo apt-get install python-opencv
-# wget http://downloads.sourceforge.net/project/pyusb/PyUSB%201.0/1.0.0-beta-1/pyusb-1.0.0b1.zip?r=&ts=1395719761&use_mirror=jaist
-# git clone https://github.com/lincolnloop/python-qrcode
-# wget https://python-escpos.googlecode.com/files/python-escpos-1.0-1.zip
-# 
+appdirs==1.4.0
+argcomplete==1.4.1
+numpy==1.11.1
+opencv-python==3.1.0.1
+Pillow==3.3.1
+pyserial==3.1.1
+python-aalib==0.3.2
+python-escpos==2.2.0
+pyusb==1.0.0
+PyYAML==3.12
+qrcode==5.3
+six==1.10.0
