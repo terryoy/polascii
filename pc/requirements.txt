@@ -2,7 +2,7 @@ appdirs==1.4.0
 argcomplete==1.4.1
 numpy==1.11.1
 opencv-python==3.1.0.1
-Pillow==3.3.1
+Pillow==6.2.0
 pyserial==3.1.1
 python-aalib==0.3.2
 python-escpos==2.2.0
