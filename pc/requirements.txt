@@ -7,6 +7,6 @@ pyserial==3.1.1
 python-aalib==0.3.2
 python-escpos==2.2.0
 pyusb==1.0.0
-PyYAML==3.12
+PyYAML==5.4
 qrcode==5.3
 six==1.10.0
