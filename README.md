@@ -4,7 +4,7 @@ POLASCII
 Pol(aroid)-ASCII - an ASCII version of a Polaroid-like camera
 
 For more information please find the project web site here:
-http://polascii.szdiy.org/
+https://terryoy.github.io/polascii/
 
 This is a small project intended for public demonstration. It captures a picture from the camera and prints a ticket with a thermal printer which contains a link to a full ascii image of the picture. It was intended to run on Raspberry Pi with Picamera and AALib(ASCII Art). However I found the performance is not compromising, so I also wrote a PC version together. The two versions are put under ```pc``` and ```rpi``` folders respectively.
 
